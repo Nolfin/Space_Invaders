@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -8,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private IEnumerator _coroutine;
     private Rigidbody2D _rb;
+    private float speed = 0.7f;
     
     // Start is called before the first frame update
     void Start()
@@ -19,16 +21,16 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator EnemyMoving()
     {
-        _rb.velocity = Vector2.down;
-        yield return new WaitForSeconds(0.8f);
+        _rb.velocity = Vector2.down*speed;
+        yield return new WaitForSeconds(0.8f/speed);
         while (true)
         {
-            _rb.velocity = Vector2.up;
-            yield return new WaitForSeconds(1.6f);
-            _rb.velocity = Vector2.right;
-            yield return new WaitForSeconds(0.5f);
-            _rb.velocity = Vector2.down;
-            yield return new WaitForSeconds(1.6f);
+            _rb.velocity = Vector2.up*speed;
+            yield return new WaitForSeconds(1.6f/speed);
+            _rb.velocity = Vector2.right*speed;
+            yield return new WaitForSeconds(0.5f/speed);
+            _rb.velocity = Vector2.down*speed;
+            yield return new WaitForSeconds(1.6f/speed);
         }
     }
 }

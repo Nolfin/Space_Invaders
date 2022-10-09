@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5077014126070068205}
   - component: {fileID: 3465619366862664764}
   - component: {fileID: -3271303617930468930}
+  - component: {fileID: 989370327860068335}
   m_Layer: 0
   m_Name: ShootingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,9 +131,23 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &989370327860068335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594505015911029129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940e04f25baa58f4aacc02d08745f0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShoot: 0
+  enemyBulletPrefab: {fileID: 5838138769750902658, guid: 3719ec821c31c0742bd8f019740aeecf, type: 3}

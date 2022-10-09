@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletLogic : MonoBehaviour
+public class EnemyBulletLogic : MonoBehaviour
 {
     private Rigidbody2D _rb;
 
@@ -15,13 +13,13 @@ public class BulletLogic : MonoBehaviour
 
     void Update()
     {
-        _rb.velocity = Vector2.left*3;
-        if(this.transform.position.x<-5) Destroy(this.gameObject);
+        _rb.velocity = Vector2.right*3;
+        if(this.transform.position.x>5) Destroy(this.gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.tag.Equals("Enemy")) return;
+        if (!other.gameObject.tag.Equals("Player")) return;
         Destroy(other.gameObject);
         Destroy(this.gameObject);
     }
