@@ -41,7 +41,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\HighScoreLogic.cs" />
      <Compile Include="Assets\Scripts\BulletLogic.cs" />
      <Compile Include="Assets\Scripts\EnemyShooting.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletLogic.cs" />
@@ -51,9 +54,6 @@
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\PointLogic.cs" />
      <Compile Include="Assets\Scripts\drawPlayer.cs" />
-     <Compile Include="Assets\Scripts\ButtonManager.cs" />
-     <Compile Include="Assets\Scripts\HighScoreLogic.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private IEnumerator _coroutine;
     private Rigidbody2D _rb;
-    private float speed = 0.7f;
+    private float _speed = 0.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -21,30 +21,30 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator EnemyMoving()
     {
-        _rb.velocity = Vector2.down*speed;
-        yield return new WaitForSeconds(0.8f/speed);
+        _rb.velocity = Vector2.down*_speed;
+        yield return new WaitForSeconds(0.8f/_speed);
         while (true)
         {
-            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
-            _rb.velocity = Vector2.up*speed;
-            yield return new WaitForSeconds(1.6f/speed);
-            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
-            _rb.velocity = Vector2.right*speed;
-            yield return new WaitForSeconds(0.5f/speed);
+            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
+            _rb.velocity = Vector2.up*_speed;
+            yield return new WaitForSeconds(1.6f/_speed);
+            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
+            _rb.velocity = Vector2.right*_speed;
+            yield return new WaitForSeconds(0.5f/_speed);
             if (gameObject.transform.position.x > 5)
             {
                 PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
                 Destroy(gameObject);
             }
-            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
-            _rb.velocity = Vector2.down*speed;
-            yield return new WaitForSeconds(1.6f/speed);
+            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
+            _rb.velocity = Vector2.down*_speed;
+            yield return new WaitForSeconds(1.6f/_speed);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision2D)
     {
-        if (!other.gameObject.tag.Equals("Player")) return;
+        if (!collision2D.gameObject.tag.Equals("Player")) return;
         PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
         Destroy(gameObject);
     }
