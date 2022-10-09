@@ -28,8 +28,15 @@ public class EnemyMovement : MonoBehaviour
             speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
             _rb.velocity = Vector2.up*speed;
             yield return new WaitForSeconds(1.6f/speed);
+            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
             _rb.velocity = Vector2.right*speed;
             yield return new WaitForSeconds(0.5f/speed);
+            if (gameObject.transform.position.x > 5)
+            {
+                PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
+                Destroy(gameObject);
+            }
+            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
             _rb.velocity = Vector2.down*speed;
             yield return new WaitForSeconds(1.6f/speed);
         }
