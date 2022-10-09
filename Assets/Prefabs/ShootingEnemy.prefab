@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3465619366862664764}
   - component: {fileID: -3271303617930468930}
   - component: {fileID: 989370327860068335}
+  - component: {fileID: 7395032945448359766}
   m_Layer: 0
   m_Name: ShootingEnemy
   m_TagString: Enemy
@@ -151,3 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToShoot: 0
   enemyBulletPrefab: {fileID: 5838138769750902658, guid: 3719ec821c31c0742bd8f019740aeecf, type: 3}
+--- !u!58 &7395032945448359766
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594505015911029129}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

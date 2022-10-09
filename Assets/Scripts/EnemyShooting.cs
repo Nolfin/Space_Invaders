@@ -20,7 +20,8 @@ public class EnemyShooting : MonoBehaviour
     {
         while(true)
         {
-            timeToShoot = Random.Range(4, 7);
+            timeToShoot = (float) Random.Range(4, 7) * (28+GameObject.FindGameObjectsWithTag("Enemy").Length) / 56;
+            Debug.Log(timeToShoot);
             yield return new WaitForSeconds(timeToShoot);
             Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
         }

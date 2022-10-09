@@ -24,5 +24,6 @@ public class BulletLogic : MonoBehaviour
         if (!other.gameObject.tag.Equals("Enemy")) return;
         Destroy(other.gameObject);
         Destroy(this.gameObject);
+        PointLogic.PointsProperty++;
     }
 }

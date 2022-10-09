@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.8f/speed);
         while (true)
         {
+            speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
             _rb.velocity = Vector2.up*speed;
             yield return new WaitForSeconds(1.6f/speed);
             _rb.velocity = Vector2.right*speed;
@@ -32,5 +33,12 @@ public class EnemyMovement : MonoBehaviour
             _rb.velocity = Vector2.down*speed;
             yield return new WaitForSeconds(1.6f/speed);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.gameObject.tag.Equals("Player")) return;
+        PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
+        Destroy(gameObject);
     }
 }

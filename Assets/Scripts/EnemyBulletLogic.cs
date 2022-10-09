@@ -20,7 +20,7 @@ public class EnemyBulletLogic : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.tag.Equals("Player")) return;
-        Destroy(other.gameObject);
         Destroy(this.gameObject);
+        PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
     }
 }
