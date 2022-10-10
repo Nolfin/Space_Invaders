@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
             string json = JsonUtility.ToJson(highScores);
             File.WriteAllText(Application.dataPath+"/saveFile.json", json);
         }
+        GameObject.Find("Canvas").transform.Find("Button").gameObject.SetActive(true);
     }
     void Update()
     {
