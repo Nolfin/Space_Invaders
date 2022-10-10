@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    public TextMeshProUGUI achievedPointsText;
+    public TextMeshProUGUI achievedPlaceText;
+
+    private int _placeTakenOnLeaderboard;
 
     void Start()
     {
@@ -30,15 +34,18 @@ public class GameManager : MonoBehaviour
         {
             if (PointLogic.PointsProperty >= highScores.highScoresList[i] && i != 0) continue;
             if (i == 9) break;
+            
             highScores.highScoresList.RemoveAt(9);
             if (PointLogic.PointsProperty >= highScores.highScoresList[i] && i == 0)
             {
                 highScores.highScoresList.Insert(0, PointLogic.PointsProperty);
+                _placeTakenOnLeaderboard = 1;
                 break;
             }
             else 
             {
                 highScores.highScoresList.Insert(i+1, PointLogic.PointsProperty);
+                _placeTakenOnLeaderboard = i+2;
                 break;
             }
         }
@@ -47,40 +54,17 @@ public class GameManager : MonoBehaviour
         json = JsonUtility.ToJson(highScores);
         Debug.Log(json);
         File.WriteAllText(Application.dataPath+"/saveFile.json", json);
-        /*for (int i = 9; i >= 0; i--)
-        {
-            if (PointLogic.PointsProperty >= HighScoreLogic.highScoreList[i] && i != 0) continue;
-            if (i == 9) break;
-            HighScoreLogic.highScoreList.Remove(10);
-            if (PointLogic.PointsProperty >= HighScoreLogic.highScoreList[i] && i == 0)
-            {
-                HighScoreLogic.highScoreList.Insert(0, PointLogic.PointsProperty);
-                break;
-            }
-            HighScoreLogic.highScoreList.Insert(i+1, PointLogic.PointsProperty);
-        }
+        achievedPointsText.text += PointLogic.PointsProperty + " points!";
+        achievedPlaceText.text = "You achieved " + _placeTakenOnLeaderboard + " place!";
+        GameObject.Find("Canvas").transform.Find("RawImage").transform.Find("PointsText").gameObject.SetActive(false);
+        GameObject.Find("Canvas").transform.Find("Button").gameObject.SetActive(false);
+        GameObject.Find("Canvas").transform.Find("EndScreen").gameObject.SetActive(true);
+        GameObject.Find("Player").gameObject.SetActive(false);
+        if(_placeTakenOnLeaderboard==0) achievedPlaceText.gameObject.SetActive(false);
+    }
 
-        for (int i = 0; i < 10; i++)
-        {
-            if (PointLogic.PointsProperty >= HighScoreLogic.highScoreList[i])
-            {
-                HighScoreLogic.highScoreList.Remove(HighScoreLogic.highScoreList.Capacity-1);
-                HighScoreLogic.highScoreList.Insert(i, PointLogic.PointsProperty);
-                break;
-            }
-        }
-        
-        if (PointLogic.PointsProperty >= HighScoreLogic.highScoreList[9])
-        {
-            string text="";
-            for (int i = 0; i < 10; i++)
-            {
-                text += HighScoreLogic.highScoreList[i] + ",\n";
-            }
-
-            text += HighScoreLogic.highScoreList[10]+1;
-            File.WriteAllText("Assets/highscores.txt", text);
-        }*/
+    public void GoBackToMainMenu()
+    {
         SceneManager.LoadScene("MenuScene");
     }
 }

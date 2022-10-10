@@ -22,7 +22,7 @@ public class PointLogic : MonoBehaviour
 
     static void pointsOnChange()
     {
-        GameObject.Find("Canvas").transform.Find("PointsText").GetComponent<TextMeshProUGUI>().text = _points.ToString();
+        GameObject.Find("Canvas").transform.Find("RawImage").transform.Find("PointsText").GetComponent<TextMeshProUGUI>().text = _points.ToString();
     }
     
     

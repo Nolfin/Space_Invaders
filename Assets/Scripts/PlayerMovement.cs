@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(speed, 0);
-        while (Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             if (Input.GetTouch(0).position.x > Screen.width / 2)
             {
