@@ -11,10 +11,10 @@ public class EnemySpawning : MonoBehaviour
     {
         for (float i = 0; i < 7; i++)
         {
-            Instantiate(shootingEnemy, new Vector3(-4, -1.5f + i / 2, 0), Quaternion.identity);
-            Instantiate(ramEnemy, new Vector3(-3.5f, -1.5f + i / 2, 0), Quaternion.identity);
-            Instantiate(ramEnemy, new Vector3(-3, -1.5f + i / 2, 0), Quaternion.identity);
-            Instantiate(ramEnemy, new Vector3(-2.5f, -1.5f + i / 2, 0), Quaternion.identity);
+            Instantiate(shootingEnemy, new Vector3( -1.5f + i / 2, 4,0), Quaternion.identity);
+            Instantiate(ramEnemy, new Vector3( -1.5f + i / 2, 3.5f,0), Quaternion.identity);
+            Instantiate(ramEnemy, new Vector3( -1.5f + i / 2, 3,0), Quaternion.identity);
+            Instantiate(ramEnemy, new Vector3(-1.5f + i / 2, 2.5f,0), Quaternion.identity);
         }
     }
 

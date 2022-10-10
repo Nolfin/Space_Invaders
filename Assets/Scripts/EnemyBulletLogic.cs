@@ -13,8 +13,8 @@ public class EnemyBulletLogic : MonoBehaviour
 
     void Update()
     {
-        _rb.velocity = Vector2.right*3;
-        if(this.transform.position.x>5) Destroy(this.gameObject);
+        _rb.velocity = Vector2.down*3;
+        if(this.transform.position.y<-5) Destroy(this.gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)

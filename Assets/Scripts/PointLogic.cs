@@ -15,6 +15,11 @@ public class PointLogic : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        _points = 0;
+    }
+
     static void pointsOnChange()
     {
         GameObject.Find("Canvas").transform.Find("PointsText").GetComponent<TextMeshProUGUI>().text = _points.ToString();

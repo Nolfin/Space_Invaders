@@ -6,24 +6,38 @@ using UnityEngine;
 
 public class HighScoreLogic : MonoBehaviour
 {
-    public static List<int> highScoreList = new List<int>(10);
-
     public TextMeshProUGUI records;
+    public TextMeshProUGUI gamesPlayedText;
 
     void Start()
     {
-        string text = File.ReadAllText("Assets/highscores.txt");
+        string json = File.ReadAllText(Application.dataPath+"/saveFile.json");
+        HighScores highScores = JsonUtility.FromJson<HighScores>(json);
+        for (int i = 0; i < 10; i++)
+        {
+            records.text += (i + 1) + ". " + highScores.highScoresList[i]+"\n";
+        }
+
+        gamesPlayedText.text += highScores.gamesPlayed;
+        /*string text = File.ReadAllText("Assets/highscores.txt");
         char[] separators = {','};
         string[] strValues = text.Split(separators);
         foreach (string str in strValues)
         {
             int val = 0;
             if(int.TryParse(str, out val)) highScoreList.Add(val);
+            Debug.Log(val);
         }
 
         for (int i = 0; i < 10; i++)
         {
             records.text += (i + 1) + ". " + highScoreList[i]+"\n";
-        }
+        }*/
+    }
+
+    public class HighScores
+    {
+        public List<int> highScoresList = new List<int>();
+        public int gamesPlayed;
     }
 }

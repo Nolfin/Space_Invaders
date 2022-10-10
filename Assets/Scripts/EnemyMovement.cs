@@ -21,23 +21,23 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator EnemyMoving()
     {
-        _rb.velocity = Vector2.down*_speed;
+        _rb.velocity = Vector2.left*_speed;
         yield return new WaitForSeconds(0.8f/_speed);
         while (true)
         {
-            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
-            _rb.velocity = Vector2.up*_speed;
-            yield return new WaitForSeconds(1.6f/_speed);
-            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
+            _speed = (float)0.7 * (28+GameObject.FindGameObjectsWithTag("Enemy").Length) /56;
             _rb.velocity = Vector2.right*_speed;
+            yield return new WaitForSeconds(1.6f/_speed);
+            _speed = (float)0.7 * (28+GameObject.FindGameObjectsWithTag("Enemy").Length) /56;
+            _rb.velocity = Vector2.down*_speed;
             yield return new WaitForSeconds(0.5f/_speed);
-            if (gameObject.transform.position.x > 5)
+            if (gameObject.transform.position.y < -5)
             {
                 PointLogic.PointsProperty -= GameObject.FindGameObjectsWithTag("Enemy").Length * 2;
                 Destroy(gameObject);
             }
-            _speed = (float)0.7 * 28 /GameObject.FindGameObjectsWithTag("Enemy").Length;
-            _rb.velocity = Vector2.down*_speed;
+            _speed = (float)0.7 * (28+GameObject.FindGameObjectsWithTag("Enemy").Length) /56;
+            _rb.velocity = Vector2.left*_speed;
             yield return new WaitForSeconds(1.6f/_speed);
         }
     }
